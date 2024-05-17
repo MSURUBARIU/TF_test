@@ -1,7 +1,7 @@
 variable "aws_region" {
   description = "AWS region for the VPC"
   type        = string
-  default     = "us-east-1"
+  # default     = "us-east-1" We should not be setting default region on a module
 }
 
 variable "vpc_cidr" {
@@ -19,8 +19,8 @@ variable "subnet_cidrs" {
 variable "security_groups" {
   description = "Map of security group names and rules"
   type = map(object({
-    ingress = list(map(any))
-    egress  = list(map(any))
+    ingress = list(object({}))
+    egress  = list(object({}))
   }))
   default = {
     "sg-example-1" = {

@@ -1,7 +1,7 @@
-provider "aws" {
-  version = "~> 5.0"
-  region  = var.aws_region
-}
+# provider "aws" {
+#   #  version = "~> 5.0"  Deprecated
+#   # region  = var.aws_region
+# }
 
 
 resource "aws_vpc" "main" {
