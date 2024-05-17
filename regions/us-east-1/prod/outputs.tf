@@ -6,9 +6,9 @@ output "prod_subnet_ids" {
   value = module.network.subnet_ids
 }
 
-output "prod_security_group_ids" {
-  value = module.network.security_group_ids
-}
+# output "prod_security_group_ids" {
+#   value = module.network.security_group_ids
+# }
 
 # output "prod_ec2_instance_id" {
 #   value = module.ec2.instance_id

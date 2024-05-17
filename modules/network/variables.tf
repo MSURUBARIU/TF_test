@@ -18,29 +18,29 @@ variable "subnet_cidrs" {
 
 variable "security_groups" {
   description = "Map of security group names and rules"
-  type = map(object({
-    ingress = list(object({}))
-    egress  = list(object({}))
-  }))
-  default = {
-    "sg-example-1" = {
-      ingress = [
-        {
-          description = "SSH"
-          from_port   = 22
-          to_port     = 22
-          protocol    = "tcp"
-          cidr_blocks = ["0.0.0.0/0"]
-        }
-      ]
-      egress = [
-        {
-          from_port   = 0
-          to_port     = 0
-          protocol    = "-1"
-          cidr_blocks = ["0.0.0.0/0"]
-        }
-      ]
-    }
-  }
+  # type = map(object({
+  #   ingress = list(object({}))
+  #   egress  = list(object({}))
+  # }))
+  # default = {
+  #   "sg-example-1" = {
+  #     ingress = [
+  #       {
+  #         description = "SSH"
+  #         from_port   = 22
+  #         to_port     = 22
+  #         protocol    = "tcp"
+  #         cidr_blocks = ["0.0.0.0/0"]
+  #       }
+  #     ]
+  #     egress = [
+  #       {
+  #         from_port   = 0
+  #         to_port     = 0
+  #         protocol    = "-1"
+  #         cidr_blocks = ["0.0.0.0/0"]
+  #       }
+  #     ]
+  #   }
+  # }
 }

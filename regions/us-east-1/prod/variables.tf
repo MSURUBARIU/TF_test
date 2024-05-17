@@ -24,4 +24,3 @@
 
 # variable "lambda_zip_path" {}
 
-variable extra_tags {}
