@@ -8,7 +8,13 @@ output "subnet_ids" {
   value       = [for subnet in aws_subnet.subnets : subnet.id]
 }
 
-# output "security_group_ids" {
-#   description = "The IDs of the security groups"
-#   value       = [for sg in aws_security_group.sgs : sg.id]
-# }
+output "Availability_zones" {
+  description = "Availability_zones"
+  value       = data.aws_availability_zones.available.names
+}
+
+
+output "security_group_ids" {
+  description = "The IDs of the security groups"
+  value       = aws_security_group.sgs #[for sg in aws_security_group.sgs : sg.id]
+}

@@ -1,9 +1,10 @@
-provider "aws" {
-  version = "~> 5.0"
-  region  = var.aws_region
-}
+# provider "aws" {
+#   version = "~> 5.0"
+#   region  = var.aws_region
+# }
 
 resource "aws_iam_role" "lambda_execution_role" {
+  #here we could also use a for_each and create lambdas in a dynamic fashion
   name = "${var.lambda_function_name}_execution_role"
 
   assume_role_policy = jsonecode({

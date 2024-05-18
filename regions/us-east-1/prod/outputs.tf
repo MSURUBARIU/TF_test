@@ -1,14 +1,15 @@
-output "prod_vpc_id" {
-  value = module.network.vpc_id
+output "vpc_id" {
+  value = "${local.settings.common_tags.environment} ${module.network.vpc_id}"
 }
 
-output "prod_subnet_ids" {
-  value = module.network.subnet_ids
+output "subnet_ids" {
+  value = [for subnet in module.network.subnet_ids : "${local.settings.common_tags.environment} ${subnet}"]
 }
 
-# output "prod_security_group_ids" {
-#   value = module.network.security_group_ids
-# }
+output "security_group_ids" {
+  # value = "${local.settings.common_tags.environment} env sg-ids ${module.network.security_group_ids}"
+  value =[for sg in module.network.security_group_ids : "${local.settings.common_tags.environment} env sg-ids ${sg.id}"]
+}
 
 # output "prod_ec2_instance_id" {
 #   value = module.ec2.instance_id

@@ -1,5 +1,16 @@
 #Intuitive Dev Ops/SRE/SecOps take home challenge
 
+## Notes:
+General implementation: I tried to keep as much of the core structure as possible while also implementing yaml drive variables.
+
+In order to minimise code duplication I used Terraform workspaces for each environment (qa, staging, prod) I understand this approach has limitations, and depending on how much they will diverge different codebases might need to be used.
+
+Network: I kept the network setup simple on purpose, normally we would create public, private and data(accesible only prom the private subnet), but would require more time.
+
+Outputs: I had to add extra logic in the outputs in order for the output to be different depending on environment.
+
+Variables inside modules: I try not to use default values unless really necessary since there is a chance you might forget to pass a variable to said module and then wonder why the output is "broken" or not what you would expect. However I understand you provided those defaults as a guideline for variable format.
+
 ## Intoduction
 Thank you for taking your time to interview with Intuitive!! For this portion of the interview process, we ask that you complete the challenge in this repository as outlined below. Please give it your best shot! 
 

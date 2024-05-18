@@ -3,6 +3,9 @@ variable "aws_region" {
   type        = string
   # default     = "us-east-1" We should not be setting default region on a module
 }
+variable "env_name" {
+  description = "Environment name (Dev, QA, Prod... )"
+}
 
 variable "vpc_cidr" {
   description = "CIDR block for the VPC"

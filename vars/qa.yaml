@@ -1,5 +1,7 @@
 common_tags:
-  project: interview_project
+  project: interview-project
+  environment: qa
+  company: intuitive-c
 
 general: 
   aws_region: us-east-1
@@ -12,7 +14,7 @@ networking:
     - "10.0.1.0/24"
     - "10.0.2.0/24"
   security_groups: 
-    sg-example-1: 
+    example-sg-1: 
       ingress:
         description: "SSH"
         from_port: 22
@@ -20,7 +22,32 @@ networking:
         protocol: "tcp"
         cidr_blocks: ["0.0.0.0/0"]
       egress:
-        - from_port: 0
-        - to_port: 0
-        - protocol: "-1"
-        - cidr_blocks: ["0.0.0.0/0"]
+        description: "SSH"
+        from_port: 0
+        to_port: 0
+        protocol: "-1"
+        cidr_blocks: 
+          - "0.0.0.0/0"
+
+serverless:
+  #we can also make this a list
+  lambdas:
+    python_lambda_1:
+      name: python_lambda_1
+
+storage:
+  s3:
+    python_lambda_bucket:
+      name: python-lambda-bucket
+      versioning_enabled: true
+      server_side_encryption_configuration:
+        sse_algorithm: AES256
+      public_access_block:
+        block_public_acls: true
+        block_public_policy: true 
+        ignore_public_acls: true
+        restrict_public_buckets: true
+      tags:
+        extra_tag_1: specific_s3_tag_1
+        extra_tag_2: specific_s3_tag_2
+
