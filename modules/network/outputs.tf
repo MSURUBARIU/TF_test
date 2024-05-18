@@ -16,5 +16,5 @@ output "Availability_zones" {
 
 output "security_group_ids" {
   description = "The IDs of the security groups"
-  value       = aws_security_group.sgs #[for sg in aws_security_group.sgs : sg.id]
+  value       = [for sg in aws_security_group.sgs : sg.id] #aws_security_group.sgs #
 }

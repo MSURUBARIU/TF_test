@@ -23,7 +23,7 @@ resource "aws_iam_role" "lambda_execution_role" {
 }
 
 resource "aws_iam_policy" "lambda_s3_access" {
-  name   = "${var.lambda_function_name}_s3_access"
+  name = "${var.lambda_function_name}_s3_access"
   policy = jsonecode({
     Version = "2012-10-17"
     Statement = [

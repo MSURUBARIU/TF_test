@@ -4,7 +4,5 @@ locals {
   public_access_block_settings_python_lambda_bucket = {
     default = var.buckets.python_lambda_bucket.public_access_block
   }
-    python_lambda_bucket_versioning_configuration = {
-    default = var.buckets.python_lambda_bucket.versioning_configuration
-  }
+
 }

@@ -7,7 +7,7 @@ locals {
   ws_settings    = yamldecode(local.workspace)
   workspace_tags = lookup(local.ws_settings, "common_tags", {})
   environment    = terraform.workspace
-  
+
   # subnets_public_tmp = {
   #   for n in range(0, local.settings.subnet_count) : n => {
   #     subnet_name   = "tf-subnet-pub-${n + 1}"

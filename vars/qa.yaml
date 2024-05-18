@@ -53,3 +53,10 @@ storage:
         extra_tag_1: specific_s3_tag_1
         extra_tag_2: specific_s3_tag_2
 
+ec2:
+  instances:
+    example:
+      ami: ami-0bb84b8ffd87024d8
+      instance_type: t3a.micro
+      tags:
+        extra_tag_1: specific_ec2_tag_1

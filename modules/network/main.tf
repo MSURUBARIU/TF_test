@@ -16,8 +16,8 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "subnets" {
   for_each = { for y, cidr in var.subnet_cidrs : y => cidr }
 
-  vpc_id            = aws_vpc.main.id
-  cidr_block        = each.value
+  vpc_id     = aws_vpc.main.id
+  cidr_block = each.value
   # trying to keep as much of the original logic
   availability_zone = element(data.aws_availability_zones.available.names, each.key)
   ## another way of getting the same result
@@ -36,7 +36,7 @@ resource "aws_security_group" "sgs" {
   vpc_id      = aws_vpc.main.id
   #adding tags as they were not present
   tags = {
-    Name = each.key
+    Name        = each.key
     environment = var.env_name
   }
   dynamic "ingress" {

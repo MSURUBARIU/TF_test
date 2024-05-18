@@ -8,7 +8,9 @@ output "subnet_ids" {
 
 output "security_group_ids" {
   # value = "${local.settings.common_tags.environment} env sg-ids ${module.network.security_group_ids}"
-  value =[for sg in module.network.security_group_ids : "${local.settings.common_tags.environment} env sg-ids ${sg.id}"]
+  # value = [for sg in module.network.security_group_ids : "${local.settings.common_tags.environment} env sg-ids ${sg.id}"]
+  value = module.network.security_group_ids #[for sg in module.network.security_group_ids : sg.id]
+
 }
 
 # output "prod_ec2_instance_id" {

@@ -1,32 +1,38 @@
 variable "aws_region" {
   description = "AWS region to launch the EC2 instance"
   type        = string
-  default     = "us-east-1"
+  # default     = "us-east-1"
 }
 
-variable "amii_id" {
-  description = "The AMI ID for the EC2 instance"
-  type        = number
-}
+# variable "ami" {
+#   description = "The AMI ID for the EC2 instance"
+#   type        = number
+# }
 
+variable "example_instance" {
+}
+variable "global_tags" {
+
+}
 variable "instances_type" {
   description = "The instance type of the EC2 instance"
-  type        = bool
-  default     = "t2.micro"
+  #well, this was wrong :)
+  type    = string
+  default = "t2.micro"
 }
 
 variable "subnet_id" {
   description = "The VPC Subnet ID to launch in"
-  type        = map{string}
+  type        = string
 }
 
-variable "security_group_id" {
+variable "vpc_security_group_ids" {
   description = "A list of security group IDs to associate with"
-  type        = list(string)
+  # type        = list(string)
 }
 
 variable "tag" {
   description = "A mapping of tags to assign to the resource"
   type        = list(string)
-  default     = {}
+  default     = []
 }
