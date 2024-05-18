@@ -11,6 +11,8 @@ Outputs: I had to add extra logic in the outputs in order for the output to be d
 
 Variables inside modules: I try not to use default values unless really necessary since there is a chance you might forget to pass a variable to said module and then wonder why the output is "broken" or not what you would expect. However I understand you provided those defaults as a guideline for variable format.
 
+I understand you wanted to test candidates, but adding a lot of spelling errors that just get cought by tf plan and apply commands and are quite easy to fix, is kind of a waste of time. The exercise is time consuming enough as it is.
+
 ## Intoduction
 Thank you for taking your time to interview with Intuitive!! For this portion of the interview process, we ask that you complete the challenge in this repository as outlined below. Please give it your best shot! 
 

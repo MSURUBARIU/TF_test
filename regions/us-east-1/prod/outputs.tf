@@ -13,11 +13,11 @@ output "security_group_ids" {
 
 }
 
-# output "prod_ec2_instance_id" {
-#   value = module.ec2.instance_id
-# }
+output "example_ec2_instance_id" {
+  value = module.ec2.instance_id
+}
 
-# output "prod_s3_bucket_id" {
+# output "lambda_s3_access_bucket_id" {
 #   value = module.s3.bucket_id
 # }
 
@@ -25,6 +25,6 @@ output "security_group_ids" {
 #   value = module.lambda.lambda_function_name
 # }
 
-# output "prod_kms_key_arn" {
-#   value = module.s3.kms_key_arn
-# }
+output "s3_kms_key" {
+  value = module.s3.s3_kms_key
+}
