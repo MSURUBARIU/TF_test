@@ -39,7 +39,9 @@ storage:
   s3:
     python_lambda_bucket:
       name: python-lambda-bucket
-      versioning_enabled: true
+      versioning_configuration:
+        status: Enabled
+        mfa_delete: Disabled
       server_side_encryption_configuration:
         sse_algorithm: AES256
       public_access_block:
