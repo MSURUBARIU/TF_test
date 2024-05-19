@@ -1,0 +1,63 @@
+common_tags:
+  project: interview-project
+  environment: qa
+  company: intuitive-c
+
+general: 
+  aws_region: us-west-2
+
+networking: 
+  cidr: 10.0.0.0/16
+  subnet_cidrs:
+    - "10.0.11.0/24"
+    - "10.0.12.0/24"
+  security_groups: 
+    example-sg-1: 
+      ingress:
+        description: "SSH"
+        from_port: 22
+        to_port: 22
+        protocol: "tcp"
+        cidr_blocks: ["0.0.0.0/0"]
+      egress:
+        description: "SSH"
+        from_port: 0
+        to_port: 0
+        protocol: "-1"
+        cidr_blocks: 
+          - "0.0.0.0/0"
+
+serverless:
+  #we can also make this a list
+  lambdas:
+    lambda_s3_access:
+      name: lambda_s3_access
+      handler: "lambda_function.lambda_handler" #"rolecall.py"
+      runtime: "python3.8"
+      lambda_zip_path: "lambda_package.zip"
+      # kms_key_arn:
+storage:
+  s3:
+    lambda_s3_access_bucket:
+      name: lambda-s3-access-bucket
+      versioning_configuration:
+        status: Enabled
+        mfa_delete: Disabled
+      server_side_encryption_configuration:
+        sse_algorithm: aws:kms #AES256
+      public_access_block:
+        block_public_acls: true
+        block_public_policy: true 
+        ignore_public_acls: true
+        restrict_public_buckets: true
+      tags:
+        extra_tag_1: specific_s3_tag_1
+        extra_tag_2: specific_s3_tag_2
+
+ec2:
+  instances:
+    example:
+      ami: ami-01cd4de4363ab6ee8
+      instance_type: t3a.micro
+      tags:
+        extra_tag_1: specific_ec2_tag_1

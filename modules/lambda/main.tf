@@ -1,11 +1,12 @@
-# provider "aws" {
-#   version = "~> 5.0"
-#   region  = var.aws_region
-# }
+provider "aws" {
+  # we need to add required providers block since version is deprecated
+  # version = "~> 5.0"
+  region  = var.aws_region
+}
 
 resource "aws_iam_role" "lambda_execution_role" {
   #here we could also use a for_each and create lambdas in a dynamic fashion
-  name = "${var.lambda_s3_access.name}_execution_role"
+  name = "${var.global_tags.environment}-${var.aws_region}-${var.lambda_s3_access.name}_execution_role"
 
   assume_role_policy = jsonencode({
     Version = "2012-10-17",
@@ -23,7 +24,7 @@ resource "aws_iam_role" "lambda_execution_role" {
 }
 
 resource "aws_iam_policy" "lambda_s3_access" {
-  name = var.lambda_s3_access.name
+  name = aws_iam_role.lambda_execution_role.name #var.lambda_s3_access.name
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
@@ -44,7 +45,7 @@ resource "aws_iam_role_policy_attachment" "lambda_s3_access_attachment" {
 }
 
 resource "aws_lambda_function" "lambda" {
-  function_name = var.lambda_s3_access.name
+  function_name = "${var.global_tags.environment}-${var.aws_region}-${var.lambda_s3_access.name}" #var.lambda_s3_access.name
   handler       = var.lambda_s3_access.handler
   role          = aws_iam_role.lambda_execution_role.arn
   # s3_bucket     = var.lambda_s3_access.name

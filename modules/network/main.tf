@@ -4,6 +4,13 @@
 # }
 
 
+
+provider "aws" {
+  # we need to add required providers block since version is deprecated
+  # version = "~> 5.0"
+  region = var.aws_region
+}
+
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
   tags = {
@@ -31,7 +38,7 @@ resource "aws_subnet" "subnets" {
 resource "aws_security_group" "sgs" {
   for_each = var.security_groups
 
-  name        = each.key
+  name        = "${var.env_name}-each.key"
   description = "Security Group ${each.key}"
   vpc_id      = aws_vpc.main.id
   #adding tags as they were not present

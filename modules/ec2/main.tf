@@ -1,7 +1,8 @@
-# provider "aws" {
-#   version = "~> 5.0"
-#   region  = var.aws_region
-# }
+provider "aws" {
+  # we need to add required providers block since version is deprecated
+  # version = "~> 5.0"
+  region  = var.aws_region
+}
 
 
 resource "aws_instance" "example" {

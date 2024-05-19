@@ -3,13 +3,17 @@
 ## Notes:
 General implementation: I tried to keep as much of the core structure as possible while also implementing yaml drive variables.
 
-In order to minimise code duplication I used Terraform workspaces for each environment (qa, staging, prod) I understand this approach has limitations, and depending on how much they will diverge different codebases might need to be used.
+In order to minimise code duplication I used Terraform workspaces for each environment (qa, staging, prod) I understand this approach has limitations, and depending on how much they will diverge different codebases might need to be used. 
+Once the modules were functioning for a region I looked at some options on how to minimise code duplication but also keeping things simple. The solution I choose will probably not scale very well, and some other process that will use folders might be needed. At the moment without enough time to polish and try different approaches I will go with different workspaces for each environment/region.  qa-us-east-1, qa-us-west-2, prod-us-east-1 and so on.
+Depending on the needs a better folder hierarchy could be environment/account/region/resource_type. At which point it might make more sense to split into reparate repos rather than a huge one. This should be discussed with the stakeholders before starting such a project. There is no one solution that works for everything. In taking the Yaml config workspace approach i meerly tried to expose some options of making code easier to write.
 
+Parametrization: Due to the fact I am using the same account(not something you would normally want to do) I had to add extra parameters to account for that.
 Network: I kept the network setup simple on purpose, normally we would create public, private and data(accesible only prom the private subnet), but would require more time.
 
-Outputs: I had to add extra logic in the outputs in order for the output to be different depending on environment.
 
 Variables inside modules: I try not to use default values unless really necessary since there is a chance you might forget to pass a variable to said module and then wonder why the output is "broken" or not what you would expect. However I understand you provided those defaults as a guideline for variable format.
+
+Lambda: Didn't actually test if it works, might need mor work. I should come back to it if time permits.
 
 I understand you wanted to test candidates, but adding a lot of spelling errors that just get cought by tf plan and apply commands and are quite easy to fix, is kind of a waste of time. The exercise is time consuming enough as it is.
 
