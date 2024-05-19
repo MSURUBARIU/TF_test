@@ -60,5 +60,6 @@ ec2:
       name: example
       ami: ami-0bb84b8ffd87024d8
       instance_type: t3a.micro
+      public_ip: false
       tags:
         extra_tag_1: specific_ec2_tag_1

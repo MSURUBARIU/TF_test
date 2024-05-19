@@ -14,7 +14,7 @@ provider "aws" {
 resource "aws_vpc" "main" {
   cidr_block = var.vpc_cidr
   tags = {
-    Name = "${var.env_name} Main VPC"
+    Name = "${var.env_name}-${var.aws_region} Main VPC"
   }
 }
 
@@ -31,19 +31,19 @@ resource "aws_subnet" "subnets" {
   #  availability_zone = data.aws_availability_zones.available.names[each.key]
 
   tags = {
-    Name = "Subnet ${each.key + 1}"
+    Name = "Subnet ${each.key + 1} ${var.env_name}-${var.aws_region}"
   }
 }
 
 resource "aws_security_group" "sgs" {
   for_each = var.security_groups
 
-  name        = "${var.env_name}-${var.aws_region}-each.key"
-  description = "Security Group ${each.key}"
+  name        = "${var.env_name}-${var.aws_region}-${each.key}"
+  description = "Security Group ${var.env_name}-${var.aws_region}-${each.key}"
   vpc_id      = aws_vpc.main.id
   #adding tags as they were not present
   tags = {
-    Name        = each.key
+    Name        = "${var.env_name}-${var.aws_region}-${each.key}"
     environment = var.env_name
   }
   dynamic "ingress" {

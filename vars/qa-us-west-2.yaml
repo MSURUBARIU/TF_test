@@ -7,10 +7,10 @@ general:
   aws_region: us-west-2
 
 networking: 
-  cidr: 10.0.0.0/16
+  cidr: 10.1.0.0/16
   subnet_cidrs:
-    - "10.0.11.0/24"
-    - "10.0.12.0/24"
+    - "10.1.11.0/24"
+    - "10.1.12.0/24"
   security_groups: 
     example-sg-1: 
       ingress:

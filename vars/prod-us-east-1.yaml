@@ -7,10 +7,10 @@ general:
   aws_region: us-east-1
 
 networking: 
-  cidr: 10.0.0.0/16
+  cidr: 10.4.0.0/16
   subnet_cidrs:
-    - "10.0.5.0/24"
-    - "10.0.6.0/24"
+    - "10.4.5.0/24"
+    - "10.4.6.0/24"
   security_groups: 
     example-sg-1: 
       ingress:
@@ -60,5 +60,6 @@ ec2:
       name: example
       ami: ami-0bb84b8ffd87024d8
       instance_type: t3a.micro
+      public_ip: false
       tags:
         extra_tag_1: specific_ec2_tag_1
