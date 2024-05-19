@@ -1,6 +1,20 @@
 #Intuitive Dev Ops/SRE/SecOps take home challenge
 
+## how to use the code provided:
+1. clone the repo: https://github.com/MSURUBARIU/TF_test
+2. I am assuming you already have an AWS account that you are logged into and can be used to deploy the code
+3. Make sure the S3 bucket specified in tf_code/backend.tf file exists, alternatively change it wo something that works for you.
+4. Make you create the necessary dynamo_db table (this was not dome with TF on purpose as that would require a different process to deploy the environments, using multiple steps, it can of course be arranged in future itterations.)
+2. Check the YAML files under the "vars" folder, they define all necessary variables for your environments/regions.
+3. cd into the repo/tf_code
+4. run terraform init
+3. Run terraform workspace new "%env-region%" for any environments you will want to deploy.
+4. Run terraform workspace select "%env-region%" for the environment/region you want to deploy.
+8. Run terraform plan -out  to use the plan when applying or terraform apply directly. 
+9. Repet previous 2 steps to deploy any oter environments you need.
+
 ## Notes:
+
 General implementation: I tried to keep as much of the core structure as possible while also implementing yaml drive variables.
 
 In order to minimise code duplication I used Terraform workspaces for each environment (qa, staging, prod) I understand this approach has limitations, and depending on how much they will diverge different codebases might need to be used. 
@@ -16,6 +30,9 @@ Variables inside modules: I try not to use default values unless really necessar
 Lambda: Didn't actually test if it works, might need mor work. I should come back to it if time permits.
 
 I understand you wanted to test candidates, but adding a lot of spelling errors that just get cought by tf plan and apply commands and are quite easy to fix, is kind of a waste of time. The exercise is time consuming enough as it is.
+
+Github actions exercise: Unfortunately I will not have enough time to finish this part of the exercise.
+I did add some info in the TF_Actions.md as intructed.
 
 ## Intoduction
 Thank you for taking your time to interview with Intuitive!! For this portion of the interview process, we ask that you complete the challenge in this repository as outlined below. Please give it your best shot! 

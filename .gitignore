@@ -1,6 +1,4 @@
 .terraform/environment
-regions/us-east-1/prod/.terraform/environment
-regions/us-east-1/prod/.terraform/terraform.tfstate
-regions/us-east-1/prod/.terraform/modules/modules.json
-regions/us-east-1/prod/.terraform/providers/registry.terraform.io/hashicorp/aws/5.50.0/darwin_arm64/LICENSE.txt
-regions/us-east-1/prod/.terraform/providers/registry.terraform.io/hashicorp/aws/5.50.0/darwin_arm64/terraform-provider-aws_v5.50.0_x5
+tf_code/.terraform
+tf_code/.terraform.lock.hcl
+tf_code/terraform.tfstate

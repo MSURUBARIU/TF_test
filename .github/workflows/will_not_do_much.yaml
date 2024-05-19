@@ -1,14 +1,5 @@
-## Unfortunately I don't have enough time to finish the pipelines.
-## Last time I did some github pipelines was arout 1.5 years ago so to put together and test 
-## something I am prowd to show will take longer than what I can spend on this now.
-## I will include some snippets of pipelines that I used in th past, and also send you an article
-## about Gitlab pipelines. (It a structure I've used in the past). However to use that structure
-## with github action you need to do some weird things as last I checked GHA will not let you pass
-## variables from one pipeline to another. The trick is to use "secrets" to pass thise variables.
-
 
 name: tf-checkov-action
-#this will deploy S3_emr infra resources to the dev infrastructure.
 on:
   # push:
   #   paths:
@@ -46,3 +37,4 @@ jobs:
           directory: test
           framework: terraform
           check: MEDIUM,HIGH
+
