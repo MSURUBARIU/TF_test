@@ -7,15 +7,16 @@ output "subnet_ids" {
 }
 
 output "security_group_ids" {
-  # value = "${local.settings.common_tags.environment} env sg-ids ${module.network.security_group_ids}"
-  # value = [for sg in module.network.security_group_ids : "${local.settings.common_tags.environment} env sg-ids ${sg.id}"]
-  value = module.network.security_group_ids #[for sg in module.network.security_group_ids : sg.id]
-
+  value = module.network.security_group_ids
 }
 
 output "example_ec2_instance_id" {
   value = module.ec2.instance_id
 }
+output "example_ec2_instance_pub_ip" {
+  value = module.ec2.instance_public_ip
+}
+
 
 output "lambda_s3_access_bucket_id" {
   value = module.s3.lambda_s3_access_bucket_id

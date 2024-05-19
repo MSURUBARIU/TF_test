@@ -57,7 +57,9 @@ storage:
 ec2:
   instances:
     example:
+      name: example
       ami: ami-01cd4de4363ab6ee8
       instance_type: t3a.micro
+      public_ip: false
       tags:
         extra_tag_1: specific_ec2_tag_1

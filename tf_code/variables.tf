@@ -1,3 +1,5 @@
+# removing variables as they are not needed with the YAML declared variables.
+
 # variable "vpc_cidr" {}
 
 # variable "subnet_cidrs" {}

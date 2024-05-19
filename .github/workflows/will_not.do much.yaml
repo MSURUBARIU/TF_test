@@ -1,0 +1,48 @@
+## Unfortunately I don't have enough time to finish the pipelines.
+## Last time I did some github pipelines was arout 1.5 years ago so to put together and test 
+## something I am prowd to show will take longer than what I can spend on this now.
+## I will include some snippets of pipelines that I used in th past, and also send you an article
+## about Gitlab pipelines. (It a structure I've used in the past). However to use that structure
+## with github action you need to do some weird things as last I checked GHA will not let you pass
+## variables from one pipeline to another. The trick is to use "secrets" to pass thise variables.
+
+
+name: tf-checkov-action
+#this will deploy S3_emr infra resources to the dev infrastructure.
+on:
+  # push:
+  #   paths:
+  #     - 'tf_code**'
+  #   branches:
+  #     - develop
+  #     - main
+  workflow_call:
+
+permissions:
+  id-token: write   # This is required for requesting the JWT
+  contents: read    # This is required for actions/checkout
+
+jobs:
+  tf-Checkov-action:
+    permissions:
+      id-token: write   # This is required for requesting the JWT
+      contents: read    # This is required for actions/checkout
+
+    runs-on: [ linux ]
+    name: tf-Checkov-action
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          node-version: '16'
+      - name: Branch name
+        run: echo "running on branch ${GITHUB_REF##*/}"
+
+      - name: Run Checkov action
+        id: checkov
+        uses: bridgecrewio/checkov-action@master
+        with:
+          directory: test
+          framework: terraform
+          check: MEDIUM,HIGH

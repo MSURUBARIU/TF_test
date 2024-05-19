@@ -11,9 +11,10 @@ variable "aws_region" {
 
 variable "example_instance" {
 }
-variable "global_tags" {
+variable "common_tags" {
 
 }
+
 variable "instances_type" {
   description = "The instance type of the EC2 instance"
   #well, this was wrong :)

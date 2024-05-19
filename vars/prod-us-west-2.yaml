@@ -1,16 +1,16 @@
 common_tags:
   project: interview-project
-  environment: qa
+  environment: prod
   company: intuitive-c
 
 general: 
-  aws_region: us-east-1
+  aws_region: us-west-2
 
 networking: 
   cidr: 10.0.0.0/16
   subnet_cidrs:
-    - "10.0.1.0/24"
-    - "10.0.2.0/24"
+    - "10.0.15.0/24"
+    - "10.0.16.0/24"
   security_groups: 
     example-sg-1: 
       ingress:
@@ -58,7 +58,7 @@ ec2:
   instances:
     example:
       name: example
-      ami: ami-0bb84b8ffd87024d8
+      ami: ami-01cd4de4363ab6ee8
       instance_type: t3a.micro
       tags:
         extra_tag_1: specific_ec2_tag_1
