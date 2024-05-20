@@ -2,3 +2,4 @@
 tf_code/.terraform
 tf_code/.terraform.lock.hcl
 tf_code/terraform.tfstate
+tf_code/.terraform.lock.hcl
